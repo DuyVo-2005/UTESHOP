@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<mapping path="/admin/Catalog/Products/loadAttributes" exclude="true" />
+	<mapping path="/admin/*" name="admin" decorator="admin.jsp" />
+	<mapping path="/manager/*" name="manager" decorator="manager.jsp" />
+	<mapping path="/*" name="web" decorator="web.jsp" />
+	<!-- Exclude path from decoration. -->
+	<mapping path="/login" exclude="true"/>
+	<mapping path="/register" exclude="true"/>
+	<mapping path="/forgot-password" exclude="true"/>
+	<mapping path="/verify-otp" exclude="true"/>
+	<mapping path="/reset-password" exclude="true"/>
+	<mapping path="/product-compare" exclude="true"/>
+	<mapping path="/api*" exclude="true" />
+    <mapping path="/admin/Review/Reviews/export" exclude="true"/>
+
+</sitemesh>

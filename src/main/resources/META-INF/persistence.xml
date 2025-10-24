@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+	version="3.0">
+<persistence-unit name="dataSource">
+<class>com.uteshop.entity.auth.Users</class>
+<class>com.uteshop.entity.auth.UserTokens</class>
+<class>com.uteshop.entity.auth.Addresses</class>
+<class>com.uteshop.entity.catalog.Categories</class>
+<class>com.uteshop.entity.catalog.Attributes</class>
+<class>com.uteshop.entity.catalog.CategoryAttributes</class>
+<class>com.uteshop.entity.catalog.Products</class>
+<class>com.uteshop.entity.catalog.ProductAttributeValues</class>
+<class>com.uteshop.entity.catalog.ProductVariants</class>
+<class>com.uteshop.entity.catalog.OptionTypes</class>
+<class>com.uteshop.entity.catalog.OptionValues</class>
+<class>com.uteshop.entity.catalog.VariantOptions</class>
+<class>com.uteshop.entity.catalog.ProductImages</class>
+<class>com.uteshop.entity.engagement.Favorites</class>
+<class>com.uteshop.entity.engagement.CompareLists</class>
+<class>com.uteshop.entity.engagement.CompareItems</class>
+<class>com.uteshop.entity.cart.Carts</class>
+<class>com.uteshop.entity.cart.CartItems</class>
+<class>com.uteshop.entity.order.Orders</class>
+<class>com.uteshop.entity.order.OrderItems</class>
+<class>com.uteshop.entity.Shipments</class>
+<class>com.uteshop.entity.Payments</class>
+<class>com.uteshop.entity.Discounts</class>
+<class>com.uteshop.entity.Vouchers</class>
+<class>com.uteshop.entity.engagement.Reviews</class>
+<class>com.uteshop.entity.engagement.ReviewMedia</class>
+<class>com.uteshop.entity.SystemSettings</class>
+<properties>
+<property name="jakarta.persistence.jdbc.driver"
+value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+<!-- Keep for team compatibility - only affects logging -->
+<property name="hibernate.show_sql" value="true" />
+<property name="hibernate.format_sql" value="true" />
+<!-- CRITICAL FIX: Using 'validate' to prevent DEADLOCK on restart.
+     PROVEN ISSUE: 'update' causes auto-logout on 2nd restart.
+     For schema changes: Manually update DB or temporarily use 'update' then revert. -->
+<property name="hibernate.hbm2ddl.auto" value="validate" />
+<property name="hibernate.dialect"
+value="org.hibernate.dialect.SQLServer2012Dialect"/>
+
+<!-- Transaction isolation level -->
+<property name="hibernate.connection.isolation" value="2"/>
+
+<!-- Connection pool settings to prevent deadlock -->
+<property name="hibernate.c3p0.min_size" value="3"/>
+<property name="hibernate.c3p0.max_size" value="10"/>
+<property name="hibernate.c3p0.timeout" value="1800"/>
+<property name="hibernate.c3p0.max_statements" value="0"/>
+<property name="hibernate.c3p0.idle_test_period" value="300"/>
+<property name="hibernate.c3p0.acquire_increment" value="1"/>
+<property name="hibernate.c3p0.maxIdleTime" value="1800"/>
+
+<!-- Query timeout (5 seconds) -->
+<property name="jakarta.persistence.query.timeout" value="5000"/>
+
+<!-- Lock timeout (3 seconds) -->
+<property name="jakarta.persistence.lock.timeout" value="3000"/>
+
+<!-- Second level cache disabled to prevent stale data -->
+<property name="hibernate.cache.use_second_level_cache" value="false"/>
+<property name="hibernate.cache.use_query_cache" value="false"/>
+</properties>
+</persistence-unit>
+</persistence>
