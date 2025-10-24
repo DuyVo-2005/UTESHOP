@@ -1,5 +1,5 @@
 # Sử dụng một image nền có sẵn Java và Tomcat
-FROM tomcat:9.0-jdk11-temurin
+FROM tomcat:10.1-jdk21-temurin
 
 # Xóa các ứng dụng web mặc định của Tomcat (không bắt buộc nhưng nên làm)
 RUN rm -rf /usr/local/tomcat/webapps/*
